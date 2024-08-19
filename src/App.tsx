@@ -13,6 +13,11 @@ function App() {
     setTask('')
   }
 
+  const cutTask = (index: number) => {
+    const newList = list.filter((_task, i) => i != index)
+    setList(newList)
+  }
+
   return (
     <div className='Container'>
       <div className='Form'>
@@ -21,7 +26,7 @@ function App() {
       </div>
 
       <div className='Tasks'>
-          {list.map((e) => <Card title={e} />)}
+          {list.map((e, index) => <Card title={e} cutTask={cutTask} index={index}/>)}
       </div>
     </div>
   )
