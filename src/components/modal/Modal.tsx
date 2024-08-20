@@ -1,7 +1,8 @@
-import { MouseEventHandler } from 'react'
 import './Modal.css'
 
-export const Modal = (props: {showModal: MouseEventHandler, children: any}) => {
+import { ModalType } from '../../types/appTypes'
+
+export const Modal = (props: ModalType) => {
 
     return(
         <>

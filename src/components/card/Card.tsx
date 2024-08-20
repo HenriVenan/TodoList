@@ -1,11 +1,21 @@
 import './Card.css'
 
-export const Card = (props: {title: string, cutTask: Function, index: number}) => {
+import { CardType } from '../../types/appTypes'
+import { useState } from 'react'
+
+export const Card = (props: CardType) => {
+
+    const [doneTask, setDoneTask] = useState<boolean>(false)
+
+    const checkTask = () => {
+        setDoneTask(!doneTask)
+      }
+
     return(
         <div className="Card">
             <div className='CardLabel'>
-                <input type="checkbox" />
-                <h3>{props.title}</h3>
+                <input type="checkbox" onClick={checkTask}/>
+                <h3 className={doneTask ? 'TaskHashed' : ''}>{props.title}</h3>
             </div>
             <div className='Buttons' onClick={() => props.cutTask(props.index)}>
                 <p>❌</p>
