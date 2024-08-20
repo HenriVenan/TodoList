@@ -37,7 +37,10 @@ function App() {
           {list.map((e, index) => <Card title={e} cutTask={cutTask} index={index}/>)}
       </div>
 
-      {modal && <Modal showModal={showModal}/>}
+      {modal && 
+        <Modal showModal={showModal}>
+          <h2>Titulo de teste para ver o modal</h2>
+        </Modal>}
     </div>
   )
 }

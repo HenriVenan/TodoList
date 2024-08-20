@@ -17,6 +17,8 @@
 .Modal {
     width: 50%;
     height: 60%;
+    position: absolute;
+    top: 20%;
 
     background-color: white;
 }
