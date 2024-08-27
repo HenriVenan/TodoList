@@ -10,3 +10,10 @@ export type ModalType = {
     showModal: MouseEventHandler, 
     children: any
 }
+
+export type TodoContextType = {
+    list: string[],
+    setList: Function
+    task: string,
+    setTask: Function
+}
