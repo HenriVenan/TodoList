@@ -1,41 +1,51 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import './App.css'
 
 import { Card } from './components/card/Card'
+import { TodoContext } from './contexts/TodoContext.tsx'
 
 function App() {
 
-  const [list, setList] = useState<Array<string>>([])
-  const [task, setTask] = useState<string>('')
+  const {
+    list, setList, 
+    task, setTask,
+
+  }: any  = useContext(TodoContext)
 
   const addTask = (task: string) => {
     setList([...list, task])
     setTask('')
   }
 
-  const cutTask = (index: number) => {
-    const newList = list.filter((_task, i) => i != index)
+  const cutTask = (id: number) => {
+    const newList = list.filter((_task: any, i: number) => i != id)
     setList(newList)
   }
 
   return (
     <div className='Container'>
+
+    {/* // ---------------------- Form ---------------------- // */}
+
       <div className='Form'>
         <input 
           type='text' 
           placeholder='Adicione uma tarefa' 
           value={task} 
-          onChange={(e) => setTask(e.target.value)}
+          onChange={(e) => setTask(e.target.value)} 
         />
         <button onClick={() => addTask(task)}>Adicionar</button>
       </div>
 
+    {/* // ---------------------- Cards ---------------------- // */}
+
       <div className='Tasks'>
-          {list.map((e, index) => 
-            <Card title={e} 
-              cutTask={cutTask} 
-              index={index} 
-          />)}
+          {list.map((title: string, id: number) => 
+            <Card 
+              title={title}
+              cutTask={cutTask}
+              id={id} 
+            />)}
       </div>
     </div>
   )
